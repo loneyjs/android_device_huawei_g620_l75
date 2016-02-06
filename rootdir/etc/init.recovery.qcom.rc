@@ -1,0 +1,28 @@
+on init
+    export PATH /sbin:/system/sbin:/system/bin:/system/xbin
+    export LD_LIBRARY_PATH /system/vendor/lib:/system/lib
+
+on fs
+    wait /dev/block/platform/msm_sdcc.1/by-name/cache
+    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/cache /cache nosuid nodev barrier=1
+
+on charger
+    stop recovery
+    start charger
+
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "ondemand"
+    write /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate 800000
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 300000
+    write /sys/devices/system/cpu/cpu1/online 0
+    write /sys/devices/system/cpu/cpu2/online 0
+    write /sys/devices/system/cpu/cpu3/online 0
+    write /sys/module/msm_pm/modes/cpu0/wfi/suspend_enabled 1
+    write /sys/module/msm_pm/modes/cpu0/wfi/idle_enabled 1
+    write /sys/module/msm_pm/modes/cpu0/power_collapse/suspend_enabled 1
+    write /sys/module/msm_pm/modes/cpu0/power_collapse/idle_enabled 1
+    write /sys/module/msm_pm/modes/cpu0/stand0alone_power_collapse/suspend_enabled 1
+    write /sys/module/msm_pm/modes/cpu0/standalone_power_collapse/idle_enabled 1
+
+service charger /sbin/healthd -c
+    class charger
+    seclabel u:r:healthd:s0

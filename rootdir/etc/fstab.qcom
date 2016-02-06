@@ -1,0 +1,13 @@
+#<src>                                              <mnt_point>  <type>  <mnt_flags and options>                      <fs_mgr_flags>
+/dev/block/platform/msm_sdcc.1/by-name/boot         /boot        emmc    defaults                                     defaults
+/dev/block/platform/msm_sdcc.1/by-name/recovery     /recovery    emmc    defaults                                     defaults
+/dev/block/platform/msm_sdcc.1/by-name/system       /system      ext4    ro,barrier=1                                 wait
+/dev/block/platform/msm_sdcc.1/by-name/cache        /cache       ext4    nosuid,nodev,barrier=1                       wait,check
+/dev/block/platform/msm_sdcc.1/by-name/userdata     /data        ext4    nosuid,nodev,barrier=1,noauto_da_alloc       wait,check,formattable,encryptable=footer
+/dev/block/platform/msm_sdcc.1/by-name/log          /log         vfat    uid=1000,gid=1007,fmask=0007,dmask=0007      wait,continue
+/dev/block/platform/msm_sdcc.1/by-name/persist      /persist     ext4    nosuid,nodev,barrier=1                       wait,check
+
+/devices/msm_sdcc.2/mmc_host                        auto         vfat    defaults                                     voldmanaged=sdcard1:auto,noemulatedsd
+/devices/platform/msm_hsusb_host                    /storage/usbotg vfat defaults                                     voldmanaged=usbotg:auto
+
+/dev/block/zram0                                    none         swap    defaults                                     zramsize=536870912

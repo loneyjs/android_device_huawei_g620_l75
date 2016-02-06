@@ -1,0 +1,14 @@
+# Camera
+/data/cam_socket[0-9]*                          			u:object_r:camera_socket:s0
+
+# MPDecision
+/data/system/default_values                                 u:object_r:mpctl_data_file:s0
+/dev/socket/mpctl                                           u:object_r:mpctl_socket:s0
+/dev/socket/mpdecision                                      u:object_r:mpctl_socket:s0
+
+# Thermal
+/sys/devices/fd510000.gpio/gpio/gpio13/active_low           u:object_r:sysfs_thermal:s0
+/sys/devices/fd510000.gpio/gpio/gpio13/edge                 u:object_r:sysfs_thermal:s0
+/sys/devices/f9925000.i2c/i2c-3/3-0048/temp1_input          u:object_r:sysfs_thermal:s0
+/sys/devices/f9925000.i2c/i2c-3/3-0048/temp1_max            u:object_r:sysfs_thermal:s0
+/sys/devices/f9925000.i2c/i2c-3/3-0048/temp1_max_hyst       u:object_r:sysfs_thermal:s0

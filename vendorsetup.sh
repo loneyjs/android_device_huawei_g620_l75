@@ -1,0 +1,2 @@
+add_lunch_combo cm_g620_l75-userdebug
+
