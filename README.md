@@ -3,7 +3,7 @@
 Based on https://github.com/cyanogenmod/android_device_huawei_g620_a2 created by @Lloir & @thoemy
 Copyright 2016, The CyanogenMod Project
 
-Device tree originally created by Crixec.
+Device tree originally created by loneyjs.
 
 ### Extracting proprietary files
 
